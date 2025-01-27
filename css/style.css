@@ -1,0 +1,108 @@
+/* Resetação geral */
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    transition: all 0.5s;
+    outline: none;
+}
+
+/* Estilo do conteúdo principal */
+main {
+    margin: auto;
+    padding: 10px;
+    width: 100%;
+    max-width: 1200px;
+    text-align: center;
+}
+
+/* Input do tipo file */
+input[type="file"] {
+    display: none;
+}
+
+/* Botão para upload de arquivo */
+#btn-file-img {
+    background-color: #cc4c4c;
+    color: #fff;
+    padding: 20px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+#btn-file-img:hover {
+    background-color: #ff4c4c;
+    filter: drop-shadow(0 0 5px #ff4c4c);
+}
+
+/* Imagem e área de resultado */
+.container-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+#canvas-img {
+    display: none;
+}
+
+#pixel-resultado {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.bgColorPixel {
+    height: 40px;
+    width: 40px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+/* Caixa de cor com input */
+.color-pixel {
+    display: block;
+    position: relative;
+    width: 200px;
+    height: 36px;
+    margin: 5px auto;
+    border: 1px solid #dadce0;
+    border-radius: 5px;
+    z-index: 2;
+}
+.color-pixel label {
+    position: absolute;
+    top: -7px;
+    left: 18px;
+    background: #fff;
+    padding: 0 8px;
+    font-size: 14px;
+    z-index: 3;
+}
+.color-pixel input {
+    position: absolute;
+    width: 55%;
+    height: 30px;
+    border: none;
+    font-size: 14px;
+    color: #333;
+    background: #fff;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+}
+
+/* Elementos adicionais */
+#fileImg {
+    display: none;
+    background: #555;
+}
+
+#color-display {
+    /* Adicione estilos adicionais aqui */
+}
