@@ -15,10 +15,10 @@ function aplicarTraducao(locale){
     document.title = locale.titleHead;
     document.getElementById('btn-file-img').textContent = locale.btnFileImage; 
 }
-async function main(){
-    const userLocale = navigator.language || navigator.userLanguage ;   
-    const locale = await carregarLocales(userLocale.toLowerCase());   
+async function mainLoadLocale(){
+    const userLocale = navigator.language || navigator.userLanguage ;     
+    const locale = await carregarLocales(userLocale.toLowerCase().substring(0,2));   
     aplicarTraducao(locale)
 }
 
-main()
+mainLoadLocale()

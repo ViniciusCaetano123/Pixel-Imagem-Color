@@ -11,23 +11,19 @@
     <input type="file" id="file-img" accept="image/*" onchange="handleImageChange(event)">
     <button id="btn-file-img" onclick="abrirFolder()"></button>
     <div class="container-img">
-      <canvas id="canvas-img" ></canvas>
-      <div id="pixel-resultado">
-        <div style="display: flex;align-items: center;gap: 10px;">
-          <div class="bgColorPixel">
-          </div>
-          <div class="color-pixel">
-            <label for="">HEX</label>
-            <input type="text" id="hex-color" readonly>
-          </div>
-        </div>
-          
+      <div id="container-canvas">
+        <canvas id="canvas-img" ></canvas>
       </div>
+      <div id="pixel-resultado"></div>
+    </div>
+    <div>
+      <p>Paleta de cores</p>
     </div>
     <div id="color-display"></div>
   </main>
-  <script src="./js/colorConversion.js"></script>
+  <script src="./js/color-conversion.js"></script>
   <script src="./js/load-locales.js"></script>
   <script src="./js/pixel-img.js"></script>
+  <script src="./js/load-imagem.js"></script>
 </body>
 </html>
