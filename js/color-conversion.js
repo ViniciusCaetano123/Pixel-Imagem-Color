@@ -1,4 +1,4 @@
-// Função para converter HEX para RGB
+
 function hexToRgb(hex) {
     const bigint = parseInt(hex.slice(1), 16);
     const r = (bigint >> 16) & 255;
@@ -7,7 +7,9 @@ function hexToRgb(hex) {
     return { r, g, b };
 }
 
-// Função para converter RGB para HSL
+const rgbToHex = (r, g, b) => {
+    return `#${((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1).toUpperCase()}`;
+}
 function rgbToHsl(r, g, b) {
     r /= 255;
     g /= 255;
@@ -17,7 +19,7 @@ function rgbToHsl(r, g, b) {
     let h, s, l = (max + min) / 2;
 
     if (max === min) {
-        h = s = 0; // achromatic
+        h = s = 0; 
     } else {
         const d = max - min;
         s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
@@ -32,7 +34,7 @@ function rgbToHsl(r, g, b) {
     return { h: Math.round(h * 360), s: Math.round(s * 100), l: Math.round(l * 100) };
 }
 
-// Função para converter RGB para CMYK
+
 function rgbToCmyk(r, g, b) {
     const c = 1 - (r / 255);
     const m = 1 - (g / 255);
@@ -41,21 +43,21 @@ function rgbToCmyk(r, g, b) {
     return `(${((c - k) / (1 - k) * 100).toFixed(0)}%, ${((m - k) / (1 - k) * 100).toFixed(0)}%, ${((y - k) / (1 - k) * 100).toFixed(0)}%, ${(k * 100).toFixed(0)}%)`;
 }
 
-// Função para converter RGB para LAB
+
 function rgbToLab(r, g, b) {
     const xyz = rgbToXyz(r, g, b);
     const lab = xyzToLab(xyz.x, xyz.y, xyz.z);
     return `(${lab.l.toFixed(0)}, ${lab.a.toFixed(0)}, ${lab.b.toFixed(0)})`;
 }
 
-// Função para converter RGB para LUV
+
 function rgbToLuv(r, g, b) {
     const xyz = rgbToXyz(r, g, b);
     const luv = xyzToLuv(xyz.x, xyz.y, xyz.z);
     return `(${luv.l.toFixed(0)}, ${luv.u.toFixed(0)}, ${luv.v.toFixed(0)})`;
 }
 
-// Função para converter RGB para HWB
+
 function rgbToHwb(r, g, b) {
     const hsl = rgbToHsl(r, g, b);
     const w = Math.min(r, g, b) / 255;
@@ -63,7 +65,7 @@ function rgbToHwb(r, g, b) {
     return `(${hsl.h}, ${(w * 100).toFixed(0)}%, ${(wb * 100).toFixed(0)}%)`;
 }
 
-// Funções auxiliares para conversões
+
 function rgbToXyz(r, g, b) {
     r = r / 255; g = g / 255; b = b / 255;
     r = r > 0.04045 ? Math.pow((r + 0.055) / 1.055, 2.4) : r / 12.92;
@@ -98,8 +100,18 @@ function xyzToLuv(x, y, z) {
     const vPrime = 13 * l * (v - refV);
     return { l, u: uPrime, v: vPrime };
 }
+const hslToHex = (h, s, l) => {
+    s /= 100;
+    l /= 100;
+    const k = n => (n + h / 30) % 12;
+    const a = s * Math.min(l, 1 - l);
+    const f = n => l - a * Math.max(Math.min(k(n) - 3, 9 - k(n), 1), -1);
+    const r = Math.round(f(0) * 255);
+    const g = Math.round(f(8) * 255);
+    const b = Math.round(f(4) * 255);
+    return rgbToHex(r, g, b);
+}
 
-// Função principal para converter HEX para todas as outras
 function convertHex(hex) {
     const rgbObj = hexToRgb(hex);
     const rgb = `(${rgbObj.r}, ${rgbObj.g}, ${rgbObj.b})`;

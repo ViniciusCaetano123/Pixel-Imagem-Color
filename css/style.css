@@ -1,4 +1,4 @@
-/* Resetação geral */
+
 * {
     padding: 0px;
     margin: 0px;
@@ -7,22 +7,29 @@
     outline: none;
     color: #333;
 }
-
-/* Estilo do conteúdo principal */
+body{
+    background-color: #f2f2f2;
+}
+header{
+    background-color: #cc4c4c;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
 main {
     margin: auto;
-    padding: 10px;
+    padding: 30px;
     width: 100%;
     max-width: 1260px;
     text-align: center;
+    background: #fff;
 }
-
-/* Input do tipo file */
 input[type="file"] {
     display: none;
 }
-
-/* Botão para upload de arquivo */
 #btn-file-img {
     background-color: #cc4c4c;
     color: #fff;
@@ -33,30 +40,25 @@ input[type="file"] {
     font-weight: 700;
     text-transform: uppercase;
     cursor: pointer;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
 }
 #btn-file-img:hover {
     background-color: #ff4c4c;
     filter: drop-shadow(0 0 5px #ff4c4c);
 }
-
-/* Imagem e área de resultado */
 .container-img {
     display: flex;
     justify-content: center;
-    align-items: center;
     gap: 20px;  
 }
 .color-container {
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-top: 10px;
-  }
+}
 #canvas-img {
     display: none;
 }
-
 #pixel-resultado {
     display: flex;
     align-items: center;
@@ -71,8 +73,6 @@ input[type="file"] {
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
-
-/* Caixa de cor com input */
 .color-pixel {
     display: block;
     position: relative;
@@ -106,7 +106,6 @@ input[type="file"] {
     z-index: 0;
     text-align: center;
 }
-
 #container-canvas{
     display: flex;
     justify-content: center;
@@ -122,9 +121,40 @@ input[type="file"] {
     padding:15px;
     flex-direction: column;
 }
-/* Elementos adicionais */
 #fileImg {
     display: none;
     background: #555;
 }
 
+
+.palette{
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 800px;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+}
+.palette div{
+    flex-grow: 1;
+    transition: all .2s ease-in-out;
+    cursor: pointer;
+    position: relative;
+    flex-basis: 1px;
+    height: 100px;
+}
+.palette div:last-child{
+    border-radius: 0px 5px 5px 0px;
+}
+.palette div:first-child{
+    border-radius: 5px 0px 0px 5px;
+}
+.palette div span{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.palette div:hover{
+    flex-basis: 280px;
+}
